@@ -27,14 +27,9 @@ This is a cross-platform mobile application designed to provide assistance in em
 - Google Maps API for location data and maps visualization
 - GetX
 
-## Development Timeline
-
-- March 2023: Project started
-- April 2023: Project completed
 
 ## Installation
 
-- Clone the repository: git clone https://github.com/hammadalive7/public_emergency_app
 - Navigate to the project directory: cd public_emergency_app
 - Install the required packages: flutter pub get
 - Run the app on a connected device or emulator: flutter run
