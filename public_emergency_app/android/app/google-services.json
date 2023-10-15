@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "992008927242",
+    "project_id": "irescue-70791",
+    "storage_bucket": "irescue-70791.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:992008927242:android:4e61d902c483334b3607f3",
+        "android_client_info": {
+          "package_name": "com.atinity.public_emergency_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAODT7hGS_rhPYkU4WcmHQhtYibLqikjZ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
