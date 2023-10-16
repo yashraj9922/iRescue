@@ -107,31 +107,72 @@ class _LiveStreamUserState extends State<LiveStreamUser> {
               ),
               const SizedBox(height: 20),
               SizedBox(
-                width: Get.width * 0.8,
-                height: Get.height * 0.2,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                  ),
-                  onPressed: () {
-                    // Navigate to the AudienceJoinPage
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => AudienceJoinPage(
-                          liveId: liveStreamId,
-                        ),
+                  width: Get.width * 0.8,
+                  height: Get.height * 0.2,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50),
                       ),
-                    );
-                  },
-                  child: const Text("Join as Audience",
-                      style: TextStyle(fontSize: 40)),
-                ),
-              ),
+                    ),
+                    onPressed: () {
+                      showLiveStreamIdInputDialog(context);
+                    },
+                    child: const Text("Join as Audience",
+                        style: TextStyle(fontSize: 40)),
+                  )),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  void showLiveStreamIdInputDialog(BuildContext context) {
+    String liveStreamId = '';
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Enter Live Stream ID"),
+          content: TextFormField(
+            onChanged: (value) {
+              liveStreamId = value;
+            },
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text("Cancel"),
+            ),
+            TextButton(
+              onPressed: () {
+                // Handle joining as an audience with the provided liveStreamId
+                if (liveStreamId.isNotEmpty) {
+                  Navigator.of(context).pop();
+                  joinLiveStreamAsAudience(liveStreamId);
+                } else {
+                  // Show an error message if the liveStreamId is empty
+                  // You can use a Snackbar or any other method for error handling
+                }
+              },
+              child: const Text("Join"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void joinLiveStreamAsAudience(String liveStreamId) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => AudienceJoinPage(
+          liveId: liveStreamId,
         ),
       ),
     );

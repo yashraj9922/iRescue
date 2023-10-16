@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+import 'package:public_emergency_app/Features/User/Screens/LiveStreaming/sos_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -126,6 +127,7 @@ class messageController extends GetxController {
 
   Future<void> sendLocationViaSMS(String EmergencyType) async {
     await getCurrentPosition().then((_currentAddress) async {
+      // ignore: unnecessary_null_comparison
       if (_currentAddress != null) {
         // Get.snackbar("Location", _currentAddress!);
         // final Uri smsLaunchUri = Uri(
@@ -139,7 +141,7 @@ class messageController extends GetxController {
         // Get.snackbar("Location",
         //     "$_currentPosition.latitude, $_currentPosition.longitude ");
         String message =
-            "HELP me! There is an $EmergencyType \n http://www.google.com/maps/place/${_currentPosition!.latitude},${_currentPosition!.longitude}}";
+            "HELP me! There is an $EmergencyType \n http://www.google.com/maps/place/${_currentPosition!.latitude},${_currentPosition!.longitude}}\n Live Stream ID: $liveStreamId";
         await emergencyContactsController
             .loadData()
             .then((emergencyContacts) => _sendSMS(message, emergencyContacts));
