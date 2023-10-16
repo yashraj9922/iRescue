@@ -16,9 +16,9 @@ import 'package:flutter/foundation.dart'
 /// ```
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
-    // if (kIsWeb) {
-    //   return web;
-    // }
+    if (kIsWeb) {
+      return web;
+    }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
@@ -49,15 +49,15 @@ class DefaultFirebaseOptions {
     }
   }
 
-  // static const FirebaseOptions web = FirebaseOptions(
-  //   apiKey: 'AIzaSyAubSwWJMh5nq4gYQx5qnWO_9FCqrffUeQ',
-  //   appId: '1:202208977773:web:5378b720cd318abe773064',
-  //   messagingSenderId: '202208977773',
-  //   projectId: 'flutteremergency',
-  //   authDomain: 'flutteremergency.firebaseapp.com',
-  //   storageBucket: 'flutteremergency.appspot.com',
-  //   measurementId: 'G-DQW99JW51L',
-  // );
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyAz8EwCSTeTuXxdRxo9FN_5M70osTDvIAQ',
+    appId: '1:992008927242:web:14c1b96f555962e53607f3',
+    messagingSenderId: '992008927242',
+    projectId: 'irescue-70791',
+    authDomain: 'irescue-70791.firebaseapp.com',
+    storageBucket: 'irescue-70791.appspot.com',
+    measurementId: 'G-3JX01E4FYQ',
+  );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyAODT7hGS_rhPYkU4WcmHQhtYibLqikjZ0',
