@@ -41,9 +41,9 @@ class AmbulanceOptions extends StatelessWidget {
                   ),
                   Container(
                     margin: const EdgeInsets.only(top: 8),
-                    child: Column(
+                    child: const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Text(
                           "Ambulance Options",
                           style: TextStyle(
@@ -78,12 +78,13 @@ class AmbulanceOptions extends StatelessWidget {
                 onTap: () async {
                   Position position = await Geolocator.getCurrentPosition(
                       desiredAccuracy: LocationAccuracy.high);
-                  var lat= position.latitude;
-                  var long= position.longitude;
+                  var lat = position.latitude;
+                  var long = position.longitude;
                   String url = '';
                   String urlAppleMaps = '';
                   if (Platform.isAndroid) {
-                    url = "https://www.google.com/maps/search/ambulance/@$lat,$long,12.5z";
+                    url =
+                        "https://www.google.com/maps/search/ambulance/@$lat,$long,12.5z";
                     if (await canLaunchUrl(Uri.parse(url))) {
                       await launchUrl(Uri.parse(url));
                     } else {
@@ -91,7 +92,8 @@ class AmbulanceOptions extends StatelessWidget {
                     }
                   } else {
                     urlAppleMaps = 'https://maps.apple.com/?q=$lat,$long';
-                    url = 'comgooglemaps://?saddr=&daddr=$lat,$long&directionsmode=driving';
+                    url =
+                        'comgooglemaps://?saddr=&daddr=$lat,$long&directionsmode=driving';
                     if (await canLaunchUrl(Uri.parse(url))) {
                       await launchUrl(Uri.parse(url));
                     } else if (await canLaunchUrl(Uri.parse(urlAppleMaps))) {
@@ -141,7 +143,8 @@ class AmbulanceOptions extends StatelessWidget {
                 subtitle:
                     const Text('Send a distress message to emergency contacts'),
                 onTap: () {
-                  smsController.sendLocationViaSMS("Medical Emergency\nSend Ambulance at");
+                  smsController.sendLocationViaSMS(
+                      "Medical Emergency\nSend Ambulance at");
                   // Add code here to send a distress message to emergency contacts
                 },
               ),

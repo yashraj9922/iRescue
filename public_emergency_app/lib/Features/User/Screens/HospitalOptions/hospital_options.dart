@@ -41,9 +41,9 @@ class HospitalOptions extends StatelessWidget {
                   ),
                   Container(
                     margin: const EdgeInsets.only(top: 8),
-                    child: Column(
+                    child: const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Text(
                           "Hospital Options",
                           style: TextStyle(
@@ -78,27 +78,29 @@ class HospitalOptions extends StatelessWidget {
                 onTap: () async {
                   Position position = await Geolocator.getCurrentPosition(
                       desiredAccuracy: LocationAccuracy.high);
-                  var lat= position.latitude;
-                  var long= position.longitude;
+                  var lat = position.latitude;
+                  var long = position.longitude;
                   String url = '';
                   String urlAppleMaps = '';
                   if (Platform.isAndroid) {
-                    url = "https://www.google.com/maps/search/hospital/@$lat,$long,14.02z";
+                    url =
+                        "https://www.google.com/maps/search/hospital/@$lat,$long,14.02z";
                     if (await canLaunchUrl(Uri.parse(url))) {
-                  await launchUrl(Uri.parse(url));
+                      await launchUrl(Uri.parse(url));
+                    } else {
+                      throw 'Could not launch $url';
+                    }
                   } else {
-                  throw 'Could not launch $url';
-                  }
-                  } else {
-                  urlAppleMaps = 'https://maps.apple.com/?q=$lat,$long';
-                  url = 'comgooglemaps://?saddr=&daddr=$lat,$long&directionsmode=driving';
-                  if (await canLaunchUrl(Uri.parse(url))) {
-                  await launchUrl(Uri.parse(url));
-                  } else if (await canLaunchUrl(Uri.parse(urlAppleMaps))) {
-                  await launchUrl(Uri.parse(urlAppleMaps));
-                  } else {
-                  throw 'Could not launch $url';
-                  }
+                    urlAppleMaps = 'https://maps.apple.com/?q=$lat,$long';
+                    url =
+                        'comgooglemaps://?saddr=&daddr=$lat,$long&directionsmode=driving';
+                    if (await canLaunchUrl(Uri.parse(url))) {
+                      await launchUrl(Uri.parse(url));
+                    } else if (await canLaunchUrl(Uri.parse(urlAppleMaps))) {
+                      await launchUrl(Uri.parse(urlAppleMaps));
+                    } else {
+                      throw 'Could not launch $url';
+                    }
                   }
                   // Add code here to display the nearest police station on the map
                 },
@@ -140,7 +142,8 @@ class HospitalOptions extends StatelessWidget {
                 subtitle:
                     const Text('Send a distress message to emergency contacts'),
                 onTap: () {
-                  smsController.sendLocationViaSMS("Medical Emergency\nSend Ambulance at");
+                  smsController.sendLocationViaSMS(
+                      "Medical Emergency\nSend Ambulance at");
                   // Add code here to send a distress message to emergency contacts
                 },
               ),

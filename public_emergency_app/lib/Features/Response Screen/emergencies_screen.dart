@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:firebase_database/firebase_database.dart';
@@ -21,8 +20,6 @@ class _EmergenciesScreenState extends State<EmergenciesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      
       extendBodyBehindAppBar: false,
       appBar: AppBar(
         backgroundColor: Colors.lightBlueAccent,
@@ -72,7 +69,8 @@ class _EmergenciesScreenState extends State<EmergenciesScreen> {
         padding: const EdgeInsets.only(top: 30),
         child: StreamBuilder(
           stream: ref.onValue,
-          builder: (BuildContext context, AsyncSnapshot<DatabaseEvent> snapshot) {
+          builder:
+              (BuildContext context, AsyncSnapshot<DatabaseEvent> snapshot) {
             if (snapshot.hasData) {
               DataSnapshot dataSnapshot = snapshot.data!.snapshot;
               Map<dynamic, dynamic> map = dataSnapshot.value as dynamic ?? {};
@@ -84,8 +82,8 @@ class _EmergenciesScreenState extends State<EmergenciesScreen> {
                 itemCount: snapshot.data!.snapshot.children.length,
                 itemBuilder: (context, index) {
                   return Container(
-                    margin:
-                        const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                    margin: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
                     child: ListTile(
                         // onTap: () async{
                         //   var lat= list[index]['lat'];
@@ -149,29 +147,32 @@ class _EmergenciesScreenState extends State<EmergenciesScreen> {
                               icon: const Icon(Icons.location_on,
                                   color: Colors.orange, size: 25),
                               onPressed: () async {
-                                   var lat= list[index]['lat'];
-                                  var long= list[index]['long'];
-                                  String url = '';
-                                  String urlAppleMaps = '';
-                                  if (Platform.isAndroid) {
-                                    url = 'https://www.google.com/maps/search/?api=1&query=$lat,$long';
-                                    if (await canLaunchUrl(Uri.parse(url))) {
-                                      await launchUrl(Uri.parse(url));
-                                    } else {
-                                      throw 'Could not launch $url';
-                                    }
+                                var lat = list[index]['lat'];
+                                var long = list[index]['long'];
+                                String url = '';
+                                String urlAppleMaps = '';
+                                if (Platform.isAndroid) {
+                                  url =
+                                      'https://www.google.com/maps/search/?api=1&query=$lat,$long';
+                                  if (await canLaunchUrl(Uri.parse(url))) {
+                                    await launchUrl(Uri.parse(url));
                                   } else {
-                                    urlAppleMaps = 'https://maps.apple.com/?q=$lat,$long';
-                                    url = 'comgooglemaps://?saddr=&daddr=$lat,$long&directionsmode=driving';
-                                    if (await canLaunchUrl(Uri.parse(url))) {
-                                      await launchUrl(Uri.parse(url));
-                                    } else if (await canLaunchUrl(Uri.parse(urlAppleMaps))) {
-                                      await launchUrl(Uri.parse(urlAppleMaps));
-                                    } else {
-                                      throw 'Could not launch $url';
-                                    }
+                                    throw 'Could not launch $url';
                                   }
-
+                                } else {
+                                  urlAppleMaps =
+                                      'https://maps.apple.com/?q=$lat,$long';
+                                  url =
+                                      'comgooglemaps://?saddr=&daddr=$lat,$long&directionsmode=driving';
+                                  if (await canLaunchUrl(Uri.parse(url))) {
+                                    await launchUrl(Uri.parse(url));
+                                  } else if (await canLaunchUrl(
+                                      Uri.parse(urlAppleMaps))) {
+                                    await launchUrl(Uri.parse(urlAppleMaps));
+                                  } else {
+                                    throw 'Could not launch $url';
+                                  }
+                                }
                               },
                             ),
                             IconButton(

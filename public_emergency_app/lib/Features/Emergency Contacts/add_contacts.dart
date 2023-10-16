@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'emergency_contacts_controller.dart';
 
+// ignore: camel_case_types
 class add_contact extends StatefulWidget {
   const add_contact({Key? key}) : super(key: key);
 
@@ -13,6 +14,7 @@ class add_contact extends StatefulWidget {
   State<add_contact> createState() => _add_contactState();
 }
 
+// ignore: camel_case_types
 class _add_contactState extends State<add_contact> {
 
   @override

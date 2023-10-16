@@ -1,7 +1,7 @@
 import 'dart:math';
 
 class Keys{
-  final int appId=2138022557;
-  final String appSign="8bc0ca30f28a7cf4c946aaa15537731cc358f7b4336c2096995c5f6392dd224d";
+  final int appId=108115123;
+  final String appSign="46c65456e30f22051de04aa9ff839d4de5da0f756638c8855a31e98335fe6350";
   final String userId=Random().nextInt(100000).toString();
 }

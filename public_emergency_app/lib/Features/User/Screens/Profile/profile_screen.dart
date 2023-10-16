@@ -23,7 +23,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       floatingActionButton:FloatingActionButton(
         backgroundColor: Colors.lightBlueAccent,
         foregroundColor: Colors.white,
-        shape: StadiumBorder(
+        shape: const StadiumBorder(
             side: BorderSide(
                 color: Colors.white24, width: 4)),
         onPressed: () { FirebaseAuth auth = FirebaseAuth.instance;
@@ -32,7 +32,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           SessionController().userid = '';
           Get.offAll(() => const LoginScreen());
         });},
-        child: Icon(Icons.logout_outlined),
+        child: const Icon(Icons.logout_outlined),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
 
@@ -55,7 +55,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               padding: const EdgeInsets.only(bottom: 15),
               child: Column(
                 children: [
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
 
@@ -65,7 +65,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                   Container(
                     margin: const EdgeInsets.only(top: 8),
-                    child: Column(
+                    child: const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children:  [
                         Text(
@@ -86,7 +86,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(30),
-          child: Column(
+          child: const Column(
             children:  [
               ProfileFormWidget(),
             ],

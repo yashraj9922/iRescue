@@ -15,18 +15,24 @@ class SelectResponder extends StatefulWidget {
   final userLong;
   final userAddress;
   final userPhone;
-   SelectResponder({Key? key, this.userID, this.userLat, this.userLong, this.userAddress, this.userPhone}
-      ) : super(key: key);
+  const SelectResponder(
+      {Key? key,
+      this.userID,
+      this.userLat,
+      this.userLong,
+      this.userAddress,
+      this.userPhone})
+      : super(key: key);
 
   @override
   State<SelectResponder> createState() => _SelectResponderState();
 }
 
-double calculateDistance(lat1, lon1, lat2, lon2){
+double calculateDistance(lat1, lon1, lat2, lon2) {
   var p = 0.017453292519943295;
-  var a = 0.5 - cos((lat2 - lat1) * p)/2 +
-      cos(lat1 * p) * cos(lat2 * p) *
-          (1 - cos((lon2 - lon1) * p))/2;
+  var a = 0.5 -
+      cos((lat2 - lat1) * p) / 2 +
+      cos(lat1 * p) * cos(lat2 * p) * (1 - cos((lon2 - lon1) * p)) / 2;
   return 12742 * asin(sqrt(a));
 }
 
@@ -35,9 +41,10 @@ class _SelectResponderState extends State<SelectResponder> {
 
   @override
   Widget build(BuildContext context) {
-    initState(){
+    initState() {
       super.initState();
     }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.lightBlueAccent,
@@ -54,21 +61,28 @@ class _SelectResponderState extends State<SelectResponder> {
             padding: const EdgeInsets.only(bottom: 15),
             child: Row(
               children: [
-                SizedBox(width: 30,),
+                const SizedBox(
+                  width: 30,
+                ),
                 Center(
                   child: SizedBox.fromSize(
-                    size: Size(36, 36),
+                    size: const Size(36, 36),
                     child: ClipOval(
                       child: Material(
                         color: Colors.lightBlueAccent,
                         child: InkWell(
                           splashColor: Colors.white,
-                          onTap: () {  Get.back();
+                          onTap: () {
+                            Get.back();
                           },
-                          child: Column(
+                          child: const Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              Icon(Icons.arrow_back, color: Colors.white, size: 30,),
+                              Icon(
+                                Icons.arrow_back,
+                                color: Colors.white,
+                                size: 30,
+                              ),
                             ],
                           ),
                         ),
@@ -76,8 +90,9 @@ class _SelectResponderState extends State<SelectResponder> {
                     ),
                   ),
                 ),
-
-                SizedBox(width: 30,),
+                const SizedBox(
+                  width: 30,
+                ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -87,9 +102,9 @@ class _SelectResponderState extends State<SelectResponder> {
                         height: Get.height * 0.08),
                     Container(
                       margin: const EdgeInsets.only(top: 8),
-                      child: Column(
+                      child: const Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
+                        children: [
                           Text(
                             "Select Responders",
                             style: TextStyle(
@@ -100,7 +115,6 @@ class _SelectResponderState extends State<SelectResponder> {
                         ],
                       ),
                     )
-
                   ],
                 ),
               ],
@@ -123,32 +137,32 @@ class _SelectResponderState extends State<SelectResponder> {
               itemBuilder: (context, index) {
                 return Container(
                   margin:
-                  const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                   child: ListTile(
-                    // onTap: () async{
-                    //   var lat= list[index]['lat'];
-                    //   var long= list[index]['long'];
-                    //   String url = '';
-                    //   String urlAppleMaps = '';
-                    //   if (Platform.isAndroid) {
-                    //     url = 'http://www.google.com/maps/place/$lat,$long';
-                    //     if (await canLaunchUrl(Uri.parse(url))) {
-                    //       await launchUrl(Uri.parse(url));
-                    //     } else {
-                    //       throw 'Could not launch $url';
-                    //     }
-                    //   } else {
-                    //     urlAppleMaps = 'https://maps.apple.com/?q=$lat,$long';
-                    //     url = 'comgooglemaps://?saddr=&daddr=$lat,$long&directionsmode=driving';
-                    //     if (await canLaunchUrl(Uri.parse(url))) {
-                    //       await launchUrl(Uri.parse(url));
-                    //     } else if (await canLaunchUrl(Uri.parse(urlAppleMaps))) {
-                    //       await launchUrl(Uri.parse(urlAppleMaps));
-                    //     } else {
-                    //       throw 'Could not launch $url';
-                    //     }
-                    //   }
-                    // },
+                      // onTap: () async{
+                      //   var lat= list[index]['lat'];
+                      //   var long= list[index]['long'];
+                      //   String url = '';
+                      //   String urlAppleMaps = '';
+                      //   if (Platform.isAndroid) {
+                      //     url = 'http://www.google.com/maps/place/$lat,$long';
+                      //     if (await canLaunchUrl(Uri.parse(url))) {
+                      //       await launchUrl(Uri.parse(url));
+                      //     } else {
+                      //       throw 'Could not launch $url';
+                      //     }
+                      //   } else {
+                      //     urlAppleMaps = 'https://maps.apple.com/?q=$lat,$long';
+                      //     url = 'comgooglemaps://?saddr=&daddr=$lat,$long&directionsmode=driving';
+                      //     if (await canLaunchUrl(Uri.parse(url))) {
+                      //       await launchUrl(Uri.parse(url));
+                      //     } else if (await canLaunchUrl(Uri.parse(urlAppleMaps))) {
+                      //       await launchUrl(Uri.parse(urlAppleMaps));
+                      //     } else {
+                      //       throw 'Could not launch $url';
+                      //     }
+                      //   }
+                      // },
                       onTap: () {
                         var lat = double.parse(list[index]['lat']);
                         var long = double.parse(list[index]['long']);
@@ -159,7 +173,7 @@ class _SelectResponderState extends State<SelectResponder> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
                       ),
-                      title:  Text(
+                      title: Text(
                         list[index]['responderType'],
                         // "Responder Type",
                         style: const TextStyle(
@@ -168,7 +182,7 @@ class _SelectResponderState extends State<SelectResponder> {
                             color: Colors.white),
                       ),
                       subtitle: Text(
-                        "Distance from this user : ${calculateDistance(widget.userLat, widget.userLong, double.parse(list[index]['lat']),double.parse(list[index]['long'])).toStringAsFixed(2)} km",
+                        "Distance from this user : ${calculateDistance(widget.userLat, widget.userLong, double.parse(list[index]['lat']), double.parse(list[index]['long'])).toStringAsFixed(2)} km",
                         // list[index]['long'],
                         // "Distance from this user : 0 km",
                         style: const TextStyle(
@@ -180,8 +194,9 @@ class _SelectResponderState extends State<SelectResponder> {
                         icon: const Icon(Icons.assignment_turned_in_outlined,
                             color: Colors.red, size: 30),
                         onPressed: () {
-                        //save the user data in active responders data storage
-                          final usersRef= FirebaseDatabase.instance.ref().child('assigned');
+                          //save the user data in active responders data storage
+                          final usersRef =
+                              FirebaseDatabase.instance.ref().child('assigned');
                           usersRef.child(list[index]['responderID']).set({
                             'responderLat': list[index]['lat'],
                             'responderLong': list[index]['long'],
@@ -192,10 +207,15 @@ class _SelectResponderState extends State<SelectResponder> {
                             'userAddress': widget.userAddress,
                             'userPhone': widget.userPhone,
                           }).whenComplete(() {
-                             FirebaseDatabase.instance.ref().child('sos').child(widget.userID).remove();
+                            FirebaseDatabase.instance
+                                .ref()
+                                .child('sos')
+                                .child(widget.userID)
+                                .remove();
                           });
-                          Get.snackbar("Assigned", 'This Emergency has been assigned to the responder');
-                          Get.off(()=>const EmergenciesScreen());
+                          Get.snackbar("Assigned",
+                              'This Emergency has been assigned to the responder');
+                          Get.off(() => const EmergenciesScreen());
                         },
                       )),
                 );

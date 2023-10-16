@@ -41,9 +41,9 @@ class FireFighterOptions extends StatelessWidget {
                   ),
                   Container(
                     margin: const EdgeInsets.only(top: 8),
-                    child: Column(
+                    child: const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Text(
                           "Fire Fighter Options",
                           style: TextStyle(
@@ -78,12 +78,13 @@ class FireFighterOptions extends StatelessWidget {
                 onTap: () async {
                   Position position = await Geolocator.getCurrentPosition(
                       desiredAccuracy: LocationAccuracy.high);
-                  var lat= position.latitude;
-                  var long= position.longitude;
+                  var lat = position.latitude;
+                  var long = position.longitude;
                   String url = '';
                   String urlAppleMaps = '';
                   if (Platform.isAndroid) {
-                    url = "https://www.google.com/maps/search/fire+brigade/@$lat,$long,12.5z";
+                    url =
+                        "https://www.google.com/maps/search/fire+brigade/@$lat,$long,12.5z";
                     if (await canLaunchUrl(Uri.parse(url))) {
                       await launchUrl(Uri.parse(url));
                     } else {
@@ -91,7 +92,8 @@ class FireFighterOptions extends StatelessWidget {
                     }
                   } else {
                     urlAppleMaps = 'https://maps.apple.com/?q=$lat,$long';
-                    url = 'comgooglemaps://?saddr=&daddr=$lat,$long&directionsmode=driving';
+                    url =
+                        'comgooglemaps://?saddr=&daddr=$lat,$long&directionsmode=driving';
                     if (await canLaunchUrl(Uri.parse(url))) {
                       await launchUrl(Uri.parse(url));
                     } else if (await canLaunchUrl(Uri.parse(urlAppleMaps))) {
@@ -149,7 +151,8 @@ class FireFighterOptions extends StatelessWidget {
                   // } else {
                   //   print("Failed");
                   // }
-                  smsController.sendLocationViaSMS("Fire Emergency\nSend Help at");
+                  smsController
+                      .sendLocationViaSMS("Fire Emergency\nSend Help at");
                 },
               ),
             ),

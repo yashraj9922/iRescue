@@ -5,6 +5,7 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:public_emergency_app/Features/User/Controllers/session_controller.dart';
+import 'package:public_emergency_app/Features/User/Screens/LiveStreaming/audienceJoinPage.dart';
 import '../../Controllers/message_sending.dart';
 import 'live_stream.dart';
 
@@ -18,10 +19,9 @@ class LiveStreamUser extends StatefulWidget {
 final idController = TextEditingController();
 final sessionController = Get.put(SessionController());
 final smsController = Get.put(messageController());
-
+final liveStreamId = sessionController.userid.toString();
 
 class _LiveStreamUserState extends State<LiveStreamUser> {
-
   @override
   void initState() {
     super.initState();
@@ -59,9 +59,9 @@ class _LiveStreamUserState extends State<LiveStreamUser> {
                   ),
                   Container(
                     margin: const EdgeInsets.only(top: 8),
-                    child: Column(
+                    child: const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Text(
                           "SOS",
                           style: TextStyle(
@@ -97,12 +97,37 @@ class _LiveStreamUserState extends State<LiveStreamUser> {
                     //save Current location to database
                     smsController.sendLocationViaSMS("SOS BUTTON PRESSED");
                     saveCurrentLocation().whenComplete(() {
-                    //   jumpToLiveStream(
-                    //       sessionController.userid.toString(), true);
+                      //   jumpToLiveStream(
+                      //       sessionController.userid.toString(), true);
                     });
-                    jumpToLiveStream(sessionController.userid.toString(), true);
+                    jumpToLiveStream(liveStreamId, true);
                   },
                   child: const Text("SOS", style: TextStyle(fontSize: 40)),
+                ),
+              ),
+              const SizedBox(height: 20),
+              SizedBox(
+                width: Get.width * 0.8,
+                height: Get.height * 0.2,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                  ),
+                  onPressed: () {
+                    // Navigate to the AudienceJoinPage
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => AudienceJoinPage(
+                          liveId: liveStreamId,
+                        ),
+                      ),
+                    );
+                  },
+                  child: const Text("Join as Audience",
+                      style: TextStyle(fontSize: 40)),
                 ),
               ),
             ],
@@ -116,7 +141,7 @@ class _LiveStreamUserState extends State<LiveStreamUser> {
     //adding in try catch
 
     //save Current location to database
-    String videoId = sessionController.userid.toString();
+    String videoId = liveStreamId;
     final user = FirebaseAuth.instance.currentUser;
     final ref = FirebaseDatabase.instance.ref("sos/${user!.uid.toString()}");
     await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high)
@@ -127,12 +152,14 @@ class _LiveStreamUserState extends State<LiveStreamUser> {
         String address =
             '${place.street}, ${place.subLocality}, ${place.subAdministrativeArea}, ${place.postalCode}';
         ref.set({
-          "time": "${DateTime.now().hour}:${DateTime.now().minute} ${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
+          "time":
+              "${DateTime.now().hour}:${DateTime.now().minute} ${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
           "address": address,
           "email": user?.email.toString(),
           "lat": position.latitude.toString(),
           "long": position.longitude.toString(),
           "videoId": user!.uid.toString(),
+          "liveId": liveStreamId,
         });
       });
     });
