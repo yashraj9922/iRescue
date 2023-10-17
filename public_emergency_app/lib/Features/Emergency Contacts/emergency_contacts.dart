@@ -3,9 +3,7 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ContactListScreen extends StatefulWidget {
-
   const ContactListScreen({Key? key}) : super(key: key);
-
 
   @override
   _ContactListScreenState createState() => _ContactListScreenState();
@@ -82,7 +80,7 @@ class _ContactListScreenState extends State<ContactListScreen> {
             )),
       ),
       body: ListView(
-      padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         children: [
           const SizedBox(height: 30),
           ListTile(
@@ -95,7 +93,6 @@ class _ContactListScreenState extends State<ContactListScreen> {
             subtitle: Text(_contact1 ?? ''),
           ),
           const SizedBox(height: 10),
-
           ListTile(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
@@ -106,7 +103,6 @@ class _ContactListScreenState extends State<ContactListScreen> {
             subtitle: Text(_contact2 ?? ''),
           ),
           const SizedBox(height: 10),
-
           ListTile(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
@@ -114,10 +110,9 @@ class _ContactListScreenState extends State<ContactListScreen> {
             tileColor: Colors.red.shade200,
             style: ListTileStyle.drawer,
             title: const Text('Contact 3'),
-            subtitle: Text(_contact3?? ''),
+            subtitle: Text(_contact3 ?? ''),
           ),
           const SizedBox(height: 10),
-
           ListTile(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
@@ -125,10 +120,9 @@ class _ContactListScreenState extends State<ContactListScreen> {
             tileColor: Colors.blueGrey.shade200,
             style: ListTileStyle.drawer,
             title: const Text('Contact 4'),
-            subtitle: Text(_contact4?? ''),
+            subtitle: Text(_contact4 ?? ''),
           ),
           const SizedBox(height: 10),
-
           ListTile(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
@@ -136,7 +130,7 @@ class _ContactListScreenState extends State<ContactListScreen> {
             tileColor: Colors.red.shade200,
             style: ListTileStyle.drawer,
             title: const Text('Contact 5'),
-            subtitle: Text(_contact5?? ''),
+            subtitle: Text(_contact5 ?? ''),
           ),
         ],
       ),

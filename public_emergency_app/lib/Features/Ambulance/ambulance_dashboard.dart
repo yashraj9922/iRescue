@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 class AmbulanceDashboard extends StatefulWidget {
   const AmbulanceDashboard({Key? key}) : super(key: key);
 

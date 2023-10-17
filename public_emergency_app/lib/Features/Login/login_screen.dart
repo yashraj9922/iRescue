@@ -1,11 +1,9 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../Common Widgets/form_footer.dart';
 import 'login_form_widget.dart';
 
-class LoginScreen extends StatelessWidget  {
+class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
@@ -17,15 +15,13 @@ class LoginScreen extends StatelessWidget  {
         backgroundColor: Colors.lightBlueAccent,
         centerTitle: true,
         automaticallyImplyLeading: false,
-
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(40),
           ),
         ),
-
         bottom: PreferredSize(
-            preferredSize:  Size.fromHeight(Get.height * 0.1),
+            preferredSize: Size.fromHeight(Get.height * 0.1),
             child: Container(
               padding: const EdgeInsets.only(bottom: 10),
               child: Column(
@@ -33,15 +29,17 @@ class LoginScreen extends StatelessWidget  {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image(image: const AssetImage("assets/logos/emergencyAppLogo.png"), height: Get.height * 0.1),
+                      Image(
+                          image: const AssetImage(
+                              "assets/logos/emergencyAppLogo.png"),
+                          height: Get.height * 0.1),
                     ],
                   ),
-
                   Container(
                     margin: const EdgeInsets.only(top: 8),
                     child: const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children:  [
+                      children: [
                         Text(
                           "Login",
                           style: TextStyle(
@@ -49,7 +47,6 @@ class LoginScreen extends StatelessWidget  {
                               fontWeight: FontWeight.w700,
                               color: Colors.white),
                         ),
-
                       ],
                     ),
                   )
@@ -65,7 +62,7 @@ class LoginScreen extends StatelessWidget  {
             children: [
               // (,
               LoginForm(),
-              FooterWidget(Texts: "Don't have an account ",Title: "Sign Up"),
+              FooterWidget(Texts: "Don't have an account ", Title: "Sign Up"),
             ],
           ),
         ),

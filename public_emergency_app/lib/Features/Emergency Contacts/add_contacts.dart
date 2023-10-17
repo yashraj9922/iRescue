@@ -16,7 +16,6 @@ class add_contact extends StatefulWidget {
 
 // ignore: camel_case_types
 class _add_contactState extends State<add_contact> {
-
   @override
   void initState() {
     super.initState();
@@ -37,26 +36,30 @@ class _add_contactState extends State<add_contact> {
 
   //Emergency Contacts
   static String _contact1 = '';
-  static   String _contact2 = '';
-  static   String _contact3 = '';
-  static   String _contact4 = '';
-  static   String _contact5 = '';
+  static String _contact2 = '';
+  static String _contact3 = '';
+  static String _contact4 = '';
+  static String _contact5 = '';
 
   //Controllers
   final contactController = Get.put(EmergencyContactsController());
   var _formKey = GlobalKey<FormState>();
-  var contact1controller = TextEditingController(text: Text(_contact1).data.toString());
-  var contact2controller = TextEditingController(text: Text(_contact2).data.toString());
-  var contact3controller = TextEditingController(text: Text(_contact3).data.toString());
-  var contact4controller = TextEditingController(text: Text(_contact4).data.toString());
-  var contact5controller = TextEditingController(text: Text(_contact5).data.toString());
+  var contact1controller =
+      TextEditingController(text: Text(_contact1).data.toString());
+  var contact2controller =
+      TextEditingController(text: Text(_contact2).data.toString());
+  var contact3controller =
+      TextEditingController(text: Text(_contact3).data.toString());
+  var contact4controller =
+      TextEditingController(text: Text(_contact4).data.toString());
+  var contact5controller =
+      TextEditingController(text: Text(_contact5).data.toString());
 
   static const String _key1 = 'contact1';
   static const String _key2 = 'contact2';
   static const String _key3 = 'contact3';
   static const String _key4 = 'contact4';
   static const String _key5 = 'contact5';
-
 
   @override
   Widget build(BuildContext context) {
@@ -87,12 +90,17 @@ class _add_contactState extends State<add_contact> {
                               color: Colors.lightBlueAccent,
                               child: InkWell(
                                 splashColor: Colors.white,
-                                onTap: () {  Get.to(() => const NavBar());
+                                onTap: () {
+                                  Get.to(() => const NavBar());
                                 },
                                 child: const Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
-                                    Icon(Icons.arrow_back, color: Colors.white, size: 30,),
+                                    Icon(
+                                      Icons.arrow_back,
+                                      color: Colors.white,
+                                      size: 30,
+                                    ),
                                   ],
                                 ),
                               ),
@@ -102,7 +110,7 @@ class _add_contactState extends State<add_contact> {
                       ),
                       SizedBox(
                         width: Get.width * 0.3,
-                      ) ,
+                      ),
                       Image(
                           image: const AssetImage(
                               "assets/logos/emergencyAppLogo.png"),
@@ -246,7 +254,8 @@ class _add_contactState extends State<add_contact> {
                         var contact4 = contact4controller.text.toString();
                         var contact5 = contact5controller.text.toString();
 
-                        contactController.setData(contact1, contact2, contact3, contact4, contact5);
+                        contactController.setData(
+                            contact1, contact2, contact3, contact4, contact5);
                         contactController.loadData();
 
                         //toast using Getx

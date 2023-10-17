@@ -15,13 +15,13 @@ class UserDashboard extends StatefulWidget {
 }
 
 class _UserDashboardState extends State<UserDashboard> {
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     messageController().handleSmsPermission();
   }
+
   final _messageController = Get.put(messageController());
   FirebaseAuth auth = FirebaseAuth.instance;
 

@@ -28,21 +28,28 @@ class ForgetPassword extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      SizedBox(width: 30,),
+                      const SizedBox(
+                        width: 30,
+                      ),
                       Center(
                         child: SizedBox.fromSize(
-                          size: Size(36, 36),
+                          size: const Size(36, 36),
                           child: ClipOval(
                             child: Material(
                               color: Colors.lightBlueAccent,
                               child: InkWell(
                                 splashColor: Colors.white,
-                                onTap: () {  Get.back();
+                                onTap: () {
+                                  Get.back();
                                 },
-                                child: Column(
+                                child: const Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
-                                    Icon(Icons.arrow_back, color: Colors.white, size: 30,),
+                                    Icon(
+                                      Icons.arrow_back,
+                                      color: Colors.white,
+                                      size: 30,
+                                    ),
                                   ],
                                 ),
                               ),
@@ -51,7 +58,9 @@ class ForgetPassword extends StatelessWidget {
                         ),
                       ),
 
-                      SizedBox(width: 10,),
+                      const SizedBox(
+                        width: 10,
+                      ),
                       // SizedBox(width: 15,),
                       // Center(
                       //   child: SizedBox.fromSize(
@@ -78,29 +87,27 @@ class ForgetPassword extends StatelessWidget {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-
-                      Image(
-                          image:
-                              AssetImage("assets/logos/emergencyAppLogo.png"),
-                          height: 100),
-                      Container(
-                        margin: const EdgeInsets.only(top: 8),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Forget Password",
-                              style: TextStyle(
-                                  fontSize: 28,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.white),
+                          const Image(
+                              image: AssetImage(
+                                  "assets/logos/emergencyAppLogo.png"),
+                              height: 100),
+                          Container(
+                            margin: const EdgeInsets.only(top: 8),
+                            child: const Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Forget Password",
+                                  style: TextStyle(
+                                      fontSize: 28,
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.white),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                      )
-
-                    ],
-                  ),
+                          )
+                        ],
+                      ),
                     ],
                   ),
                 ],
@@ -110,9 +117,9 @@ class ForgetPassword extends StatelessWidget {
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(30),
-          child: Column(
+          child: const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               ForgetFormWidget(),
               FooterWidget(Texts: "Don't Have Account ", Title: "Sign Up"),
             ],
