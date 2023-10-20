@@ -121,7 +121,7 @@ class FireFighterOptions extends StatelessWidget {
                   onTap: () async {
                     if (await Permission.phone.request().isGranted) {
                       debugPrint("In making phone call");
-                      var url = Uri.parse("tel:16");
+                      var url = Uri.parse("tel:101");
                       await launchUrl(url);
 
                       debugPrint("Location Permission is granted");

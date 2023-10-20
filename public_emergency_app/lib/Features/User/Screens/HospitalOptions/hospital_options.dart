@@ -120,7 +120,7 @@ class HospitalOptions extends StatelessWidget {
                 onTap: () async {
                   if (await Permission.phone.request().isGranted) {
                     debugPrint("In making phone call");
-                    var url = Uri.parse("tel:1122");
+                    var url = Uri.parse("tel:104");
                     await launchUrl(url);
                     debugPrint("Location Permission is granted");
                   } else {

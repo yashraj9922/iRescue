@@ -46,9 +46,9 @@ class _PoliceOptionsState extends State<PoliceOptions> {
                   ),
                   Container(
                     margin: const EdgeInsets.only(top: 8),
-                    child: Column(
+                    child: const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Text(
                           "Police Options",
                           style: TextStyle(
@@ -125,7 +125,7 @@ class _PoliceOptionsState extends State<PoliceOptions> {
                 onTap: () async {
                   if (await Permission.phone.request().isGranted) {
                     debugPrint("In making phone call");
-                    var url = Uri.parse("tel:15");
+                    var url = Uri.parse("tel:100");
                     await launchUrl(url);
                     debugPrint("Location Permission is granted");
                   } else {
