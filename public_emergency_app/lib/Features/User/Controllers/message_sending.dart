@@ -1,17 +1,13 @@
-import 'dart:io';
-
 import 'package:background_sms/background_sms.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter_sms/flutter_sms.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:public_emergency_app/Features/User/Screens/LiveStreaming/sos_page.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../../Emergency Contacts/emergency_contacts_controller.dart';
 
+// ignore: camel_case_types
 class messageController extends GetxController {
   static messageController get instance => Get.find();
   final emergencyContactsController = Get.put(EmergencyContactsController());
@@ -30,12 +26,6 @@ class messageController extends GetxController {
     Get.snackbar("SMS", "Distress SMS Sent Successfully");
 
     print(recipents);
-
-    //     await sendSMS(message: message, recipients: recipents, sendDirect: true)
-    //         .catchError((onError) {
-    //   print("ERROR IN SENDING FUNCTION!!!" + onError.toString());
-    // });
-    // print(_result);
   }
 
   Future<bool> handleLocationPermission() async {
@@ -75,8 +65,6 @@ class messageController extends GetxController {
   }
 
   Future<Position> getCurrentPosition() async {
-    // final hasSmsPermission = handleSmsPermission();
-
     final hasPermission = await handleLocationPermission();
 
     if (!hasPermission) {
@@ -129,17 +117,6 @@ class messageController extends GetxController {
     await getCurrentPosition().then((_currentAddress) async {
       // ignore: unnecessary_null_comparison
       if (_currentAddress != null) {
-        // Get.snackbar("Location", _currentAddress!);
-        // final Uri smsLaunchUri = Uri(
-        //   scheme: 'sms',
-        //   path: '03177674726',
-        //   queryParameters: <String, String>{
-        //     'body': "HELP me! I am under the water \n http://www.google.com/maps/place/${_currentPosition!.latitude},${_currentPosition!.longitude}"
-        //   },
-        // );
-        // launchUrl(smsLaunchUri);
-        // Get.snackbar("Location",
-        //     "$_currentPosition.latitude, $_currentPosition.longitude ");
         String message =
             "HELP me! There is an $EmergencyType \n http://www.google.com/maps/place/${_currentPosition!.latitude},${_currentPosition!.longitude}}\n Live Stream ID: $liveStreamId";
         await emergencyContactsController
@@ -147,7 +124,5 @@ class messageController extends GetxController {
             .then((emergencyContacts) => _sendSMS(message, emergencyContacts));
       } else {}
     });
-
-    // Get.snackbar("Location", "Location not found");
   }
 }
