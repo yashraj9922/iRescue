@@ -12,7 +12,7 @@ This is a cross-platform mobile application designed to provide assistance in em
 - Add emergency contacts to receive distress SMS messages.
 - Initiate an SOS request with the push of a button, which sends alerts to admins and begins live streaming for remote assessment.
 - View and manage all emergency cases from a responder dashboard, which shows assigned emergencies with the location of the emergency and live video feed
-- Web App for admin to see and assign emergencies
+- ChatBot(iRescue Bot) support available for medical/disater/emergencies related queries. 
 
 
 ## Technologies Used
@@ -21,11 +21,3 @@ This is a cross-platform mobile application designed to provide assistance in em
 - Firebase for real-time data synchronization and user authentication
 - Google Maps API for location data and maps visualization
 - GetX
-
-
-## Installation
-
-- Clone the repository
-- Navigate to the project directory: cd public_emergency_app
-- Install the required packages: flutter pub get
-- Run the app on a connected device or emulator: flutter run
