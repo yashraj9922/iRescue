@@ -107,21 +107,24 @@ class _LiveStreamUserState extends State<LiveStreamUser> {
               ),
               const SizedBox(height: 20),
               SizedBox(
-                  width: Get.width * 0.8,
-                  height: Get.height * 0.2,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
+                width: Get.width * 0.8,
+                height: Get.height * 0.2,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
                     ),
-                    onPressed: () {
-                      showLiveStreamIdInputDialog(context);
-                    },
-                    child: const Text("Join as Viewer",
-                        style: TextStyle(fontSize: 40)),
-                  )),
+                  ),
+                  onPressed: () {
+                    showLiveStreamIdInputDialog(context);
+                  },
+                  child: const Text(
+                    "Join as Viewer",
+                    style: TextStyle(fontSize: 38),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
