@@ -30,7 +30,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: user == null ? const OnBoardingScreen() : const VerifyEmailPage(),
-      // home:const PoliceDashboard(),
     );
   }
 }

@@ -119,7 +119,7 @@ class _LiveStreamUserState extends State<LiveStreamUser> {
                     onPressed: () {
                       showLiveStreamIdInputDialog(context);
                     },
-                    child: const Text("Join as Audience",
+                    child: const Text("Join as Viewer",
                         style: TextStyle(fontSize: 40)),
                   )),
             ],
